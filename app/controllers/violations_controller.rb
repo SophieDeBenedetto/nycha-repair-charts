@@ -20,7 +20,7 @@ class ViolationsController < ApplicationController
     {keyword: "Water Leak",   value: water_leak_count},
     {keyword: "Bathroom",   value: bathroom_count},
     {keyword: "Infestation",   value: infestation_count},
-    {keyword: "Broken Carbon Monoxide Detector",   value: co_count},
+    {keyword: "CO Detector",   value: co_count},
     {keyword: "Window",   value: window_count},
     {keyword: "Broken Lock",   value: lock_count},
     {keyword: "Water/Plumbing",   value: water_count},

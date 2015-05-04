@@ -7,9 +7,9 @@
 }
 
 .chart {
-  width: 10000px;
+  width: 960px;
 }
-.chart g {
+.chart rect {
   fill: steelblue;
 }
 
@@ -17,4 +17,27 @@
   fill: black;
   font: 10px sans-serif;
   text-anchor: end;
+}
+
+.chart rect:hover {
+  fill: #56728E;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  /*display: none;*/
 }
