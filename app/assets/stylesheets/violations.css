@@ -41,3 +41,8 @@
 .x.axis path {
   /*display: none;*/
 }
+
+path {
+  stroke: #fff;
+  fill-rule: evenodd;
+}
