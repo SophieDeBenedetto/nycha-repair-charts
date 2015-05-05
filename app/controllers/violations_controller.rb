@@ -27,8 +27,27 @@ class ViolationsController < ApplicationController
     {keyword: "Electrical",   value: el_count},
     ]
 
+    gon.sunburst_data = 
+        Violation.all.group_by { |v| v.keyword }.map do |keyword, violations|
+          {
+            name: keyword,
+            children: violations.group_by{ |v| v.subcat }.map do |subcat, violations|
+              {
+                name: subcat,
+                count: violations.count
+              }
+            end
+          }
+        end
+
+    puts gon.sunburst_data
+    puts Violation.all.count
+    
   end
 
   
 end
+
+
+
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502152046) do
+ActiveRecord::Schema.define(version: 20150505152027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150502152046) do
     t.string  "boro"
     t.text    "description"
     t.string  "keyword"
+    t.string  "subcat"
   end
 
 end

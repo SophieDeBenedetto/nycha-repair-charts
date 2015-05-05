@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'pry'
 #gem for nyc open data api
 gem 'gon'
 gem 'soda-ruby', :require => 'soda'
