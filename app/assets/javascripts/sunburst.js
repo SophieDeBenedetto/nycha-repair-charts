@@ -1,6 +1,6 @@
 $(function(){
  
-  sunBurst({name: "?", children: gon.sunburst_data});
+  sunBurst({name: "NYCHA Repair Violations", children: gon.sunburst_data});
 
 })
 
@@ -32,12 +32,12 @@ function sunBurst(jsonObject){
   // }
 
 
-  var width = 960,
+  var width = 960/2,
     height = 700,
     radius = Math.min(width, height) / 2,
     color = d3.scale.category20c();
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(".sunburst").append("svg").attr("class", "center-sun")
     .attr("width", width)
     .attr("height", height)
   .append("g")

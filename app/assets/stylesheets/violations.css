@@ -46,3 +46,21 @@ path {
   stroke: #fff;
   fill-rule: evenodd;
 }
+
+.sunburst {
+  width: 800px;
+  height: 1000px;
+}
+
+/*.sunburst svg {
+  margin-left: 50px;
+}
+*/
+.center-sun {
+  margin-left: 100px;
+}
+
+.chart-heading {
+  color: steelblue;
+}
+
