@@ -1,13 +1,15 @@
 $(function(){
  
   // sunBurst({name: "NYCHA Repair Violations", children: gon.sunburst_data});
-  zoomBurst();
+  zoomBurst(gon.man_sunburst_data, ".man-burst");
+  zoomBurst(gon.bx_sunburst_data, ".bx-burst");
+  zoomBurst(gon.bk_sunburst_data, ".bk-burst");
 
 })
 
-function zoomBurst() {
+function zoomBurst(root_data, boro) {
  var root = {"name": "NYCHA Repair Violations",
- "children": gon.sunburst_data}
+ "children": root_data}
  // debugger;
 
   //  var root = {
@@ -49,7 +51,7 @@ var y = d3.scale.linear()
 
 var color = d3.scale.category20c();
 
-var svg = d3.select("body").append("svg").attr("class", "col-md-offset-1")
+var svg = d3.select(boro).append("svg").attr("class", "col-md-offset-1")
     .attr("width", width)
     .attr("height", height)
   .append("g")
