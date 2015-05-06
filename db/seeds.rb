@@ -36,6 +36,8 @@ response.each do |r|
     violation.keyword = "Bathroom"
   elsif r.novdescription.downcase.include?("defective faucets") || r.novdescription.downcase.include?("hot water") || r.novdescription.downcase.include?("cold water")
     violation.keyword = "Water/Plumbing"
+  else 
+    violation.keyword = "Misc."
   end
   violation.save
       

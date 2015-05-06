@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   resources :violations
 
+  get "manhattan" => 'violations#manhattan'
+  get "bronx" => 'violations#bronx'
+  get "brooklyn" => 'violations#brooklyn'
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
