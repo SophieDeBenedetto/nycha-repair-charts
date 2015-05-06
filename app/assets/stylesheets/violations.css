@@ -47,6 +47,11 @@ path {
   fill-rule: evenodd;
 }
 
+text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
 .sunburst {
   width: 800px;
   height: 1000px;

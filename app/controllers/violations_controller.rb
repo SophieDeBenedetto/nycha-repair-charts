@@ -40,8 +40,6 @@ class ViolationsController < ApplicationController
           }
         end
 
-    puts gon.sunburst_data
-    puts Violation.all.count
     
   end
 
