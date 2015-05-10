@@ -9,7 +9,6 @@ class ViolationsController < ApplicationController
   def manhattan
     gon.man_data = Violation.get_bar_chart_data(1)
     gon.man_sunburst_data = Violation.get_sunburst_data(1)
-
   end
 
   def bronx

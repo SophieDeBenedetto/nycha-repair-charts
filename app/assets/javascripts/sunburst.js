@@ -10,61 +10,35 @@ $(function(){
 function zoomBurst(root_data, boro) {
  var root = {"name": "NYCHA Repair Violations",
  "children": root_data}
- // debugger;
 
-  //  var root = {
-  //  "name": "flare",
-  //  "children": [
-  //   {
-  //    "name": "analytics",
-  //    "children": [
-  //     {
-  //      "name": "cluster",
-  //      "children": [
-  //       {"name": "AgglomerativeCluster", "size": 3938},
-  //       {"name": "CommunityStructure", "size": 3812},
-  //       {"name": "MergeEdge", "size": 743}
-  //      ]
-  //     },
-  //     {
-  //      "name": "graph",
-  //      "children": [
-  //       {"name": "BetweennessCentrality", "size": 3534},
-  //       {"name": "LinkDistance", "size": 5731}
-  //      ]
-  //     }
-  //    ]
-  //   }
-  //  ]
-  // }
 
 
   var width = 960,
     height = 700,
     radius = Math.min(width, height) / 2;
 
-var x = d3.scale.linear()
-    .range([0, 2 * Math.PI]);
+  var x = d3.scale.linear()
+      .range([0, 2 * Math.PI]);
 
-var y = d3.scale.linear()
-    .range([0, radius]);
+  var y = d3.scale.linear()
+      .range([0, radius]);
 
-var color = d3.scale.category20c();
+  var color = d3.scale.category20c();
 
-var svg = d3.select(boro).append("svg").attr("class", "col-md-offset-1")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2 ) + ")");
+  var svg = d3.select(boro).append("svg").attr("class", "col-md-offset-1")
+      .attr("width", width)
+      .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + (height / 2 ) + ")");
 
-var partition = d3.layout.partition(root)
-    .value(function(d) { return d.count; });
+  var partition = d3.layout.partition(root)
+      .value(function(d) { return d.count; });
 
-var arc = d3.svg.arc()
-    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+  var arc = d3.svg.arc()
+      .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+      .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+      .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+      .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
 
   var g = svg.selectAll("g")
@@ -75,6 +49,7 @@ var arc = d3.svg.arc()
     .attr("d", arc)
     .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
     .on("click", click);
+
 
   var text = g.append("text")
     .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
@@ -105,23 +80,23 @@ var arc = d3.svg.arc()
   }
 
 
-d3.select(self.frameElement).style("height", height + "px");
+  d3.select(self.frameElement).style("height", height + "px");
 
-// Interpolate the scales!
-function arcTween(d) {
-  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-      yd = d3.interpolate(y.domain(), [d.y, 1]),
-      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-  return function(d, i) {
-    return i
-        ? function(t) { return arc(d); }
-        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-  };
-}
+  // Interpolate the scales!
+  function arcTween(d) {
+    var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+        yd = d3.interpolate(y.domain(), [d.y, 1]),
+        yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+    return function(d, i) {
+      return i
+          ? function(t) { return arc(d); }
+          : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+    };
+  }
 
-function computeTextRotation(d) {
-  return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
-}
+  function computeTextRotation(d) {
+    return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+  }
 }
 function sunBurst(jsonObject){
   // var jsonObject = {
